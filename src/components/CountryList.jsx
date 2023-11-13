@@ -1,14 +1,16 @@
+/* eslint-disable react/prop-types */
 import Spinner from "./Spinner";
 import styles from "./CountryList.module.css";
-import CountryItem from "./CityItem";
+import CountryItem from "./CountryItem";
 import Message from "./Message";
 
-export default function CountryList({ isLoading, cities }) {
+export default function CountryList({ cities, isLoading }) {
   if (isLoading) return <Spinner />;
 
-  const countries = cities.reduce((a, city) => {
-    if (!a.map((el) => el.city).includes(city.country))
-      return [...a, { country: city.country, emoji: city.emoji }];
+  const countries = cities.reduce((arr, city) => {
+    if (!arr.map((el) => el.country).includes(city.country))
+      return [...arr, { country: city.country, emoji: city.emoji }];
+    else return arr;
   }, []);
 
   if (!cities.length)

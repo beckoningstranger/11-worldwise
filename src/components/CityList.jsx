@@ -6,6 +6,8 @@ import Message from "./Message";
 export default function CityList({ isLoading, cities }) {
   if (isLoading) return <Spinner />;
 
+  console.log("[CityList]:", cities);
+
   if (!cities.length)
     return (
       <Message message="Add your first city by clicking on a city on the map." />
